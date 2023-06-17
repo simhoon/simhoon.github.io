@@ -172,7 +172,7 @@ function draw() {
 		fill(figureColorR, figureColorG / 3, figureColorB / 3, figureEffect / 3);
 		triangle(width / 2.5, height / 5 - figureSize,
 						 width / 2.5 - mouseY, height / 5 + mouseY,
-						 width / 2.5 + mouseX, height / 5 + mouseX);
+						 width / 2.5 + mouseY, height / 5 + mouseY);
 		
 		// 마우스 따라 다니는 텍스트
 		push()
