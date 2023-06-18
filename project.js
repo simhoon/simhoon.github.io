@@ -10,9 +10,16 @@ let sizeSlider, shapeSlider, effectSlider;
 let colorSliderR, colorSliderG, colorSliderB, colorSliderA;
 let screenType = 0;
 
+// easing text 변수
 let easingX = 1;
 let easingY = 1;
 let easing = 0.05;
+
+// rotate text 변수 
+let angle = 0; // 회전 각도
+let radius = 100; // 원의 반지름
+let texts = ["ART", "Tech", "Collab."]; // 회전하는 텍스트 배열
+let numTexts = texts.length; // 텍스트 개수
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -69,7 +76,6 @@ function setup() {
 	
 	colorSliderA = createSlider(0, 255, figureColorA);
 	colorSliderA.position(20, 300);
-
 }
 
 function draw() {
@@ -148,7 +154,7 @@ function draw() {
 	text("colorSliderA: " + figureColorA, 160, 312);
 
 	// shapeSlider 슬라이더 도형 선택
-	push();
+	push()
 	if (figureShape === 0) {
 		// 상단 도형
 		noStroke();
@@ -161,10 +167,10 @@ function draw() {
 		fill(figureColorR / 2, figureColorG * 4, figureColorB / 4, figureEffect / 4);
 		arc(width / 1.8 , height / 5, figureSize, figureSize, 0, mouseY);
 		
-		// 마우스 따라 다니는 텍스트
-			push()
-			easingEffect ();
-			pop()
+		// 마우스 따라 회전하는 텍스트
+		push()
+		rotateText ();
+		pop()
 	} 
 	
 	else if (figureShape === 1) {
@@ -176,7 +182,7 @@ function draw() {
 		
 		// 마우스 따라 다니는 텍스트
 		push()
-		easingEffect ();
+		easingText ();
 		pop()
 	} 
 	
@@ -185,12 +191,12 @@ function draw() {
 		fill(figureColorR, figureColorG, figureColorB, figureEffect / 2);
 		rect(width / 2.5 - figureSize / 2.5, height / 5 - figureSize / 5, figureSize / mouseX * 100, figureSize / mouseY * 100);
 		
-		// 마우스 따라 다니는 텍스트
+		// 마우스 따라 회전하는 텍스트
 		push()
-		easingEffect ();
+		rotateText ();
 		pop()
 	}
-	pop();
+	pop()
 
 }
 
